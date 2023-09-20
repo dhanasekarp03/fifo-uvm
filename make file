@@ -11,5 +11,5 @@ comp:
 /hwetools/work_area/frontend/dhanasekarp/fifo-testbench/1800.2-2020-2.0/src/uvm_pkg.sv +define+UVM_NO_DPI testbench.sv  
 
 run: 
-	$(VSIM)   -coverage  -novopt top +UVM_TESTNAME=test_read_write -l vsim.log -c
+	$(VSIM)   -coverage  -novopt top +UVM_TESTNAME=f_test -l vsim.log -c
        ##add wave -r 
