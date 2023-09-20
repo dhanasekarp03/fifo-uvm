@@ -1,0 +1,15 @@
+VLOG =  /tools/mentor/questasim/questasim/bin/vlog
+
+VSIM = /tools/mentor/questasim/questasim/bin/vsim
+
+all: comp_rtl comp run
+
+comp_rtl:
+	$(VLOG) +cover=bcstfex /hwetools/work_area/frontend/dhanasekarp/UVM-FIFO/design.sv
+comp: 
+	$(VLOG) +incdir+/hwetools/work_area/frontend/dhanasekarp/fifo-testbench/1800.2-2020-2.0/src \
+/hwetools/work_area/frontend/dhanasekarp/fifo-testbench/1800.2-2020-2.0/src/uvm_pkg.sv +define+UVM_NO_DPI testbench.sv  
+
+run: 
+	$(VSIM)   -coverage  -novopt top +UVM_TESTNAME=test_read_write -l vsim.log -c
+       ##add wave -r 
